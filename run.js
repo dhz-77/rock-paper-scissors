@@ -39,4 +39,21 @@ function getComputerChoice() {
 
 }
 
+function getHumanChoice() {
+    // write a function that takes the user choice and returns it
+
+    // create a pop up window which prompts the user to input text and
+    // return a valid choice
+    let humanChoice = prompt("Rock, paper or scissors?");
+
+    if (humanChoice.toLowerCase() === "rock"
+        || humanChoice.toLowerCase() === "paper"
+        || humanChoice.toLowerCase() === "scissors") {
+        return humanChoice.toLowerCase();
+    } else {
+        return "No valid input.";
+    }
+}
+
 console.log(getComputerChoice());
+console.log(getHumanChoice());
