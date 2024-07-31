@@ -68,6 +68,11 @@ console.log("Human choice: " + getHumanChoice());
 // as arguments, plays a single round, increments the round winner’s 
 // score and logs a winner announcement.
 function playRound(humanChoice, computerChoice) {
-    const humanChoiceFormatted = humanChoice.toLowerCase();
-
+    const hChoice = humanChoice.toLowerCase();
+    if (hChoice === "rock" && computerChoice === "scissors") {
+        humanScore++;
+        return "You win! Rock beats Scissors."
+    }
 }
+
+console.log(playRound(getHumanChoice(), getComputerChoice()));
