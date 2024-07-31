@@ -80,7 +80,10 @@ function playGame() {
                 max++; // add one iteration to the max number of iterations in the loop
                 continue; // skip this iteration
             }
+            console.log("Human choice: " + humanSelection);
+
             const computerSelection = getComputerChoice();
+            console.log("Computer choice: " + computerSelection);
 
             console.log(playRound(humanSelection, computerSelection));
         }
@@ -102,9 +105,6 @@ function playGame() {
     // score and logs a winner announcement.
     function playRound(humanChoice, computerChoice) {
         const hChoice = humanChoice.toLowerCase();
-
-        console.log("Human choice: " + hChoice);
-        console.log("Computer choice: " + computerChoice);
 
         if (hChoice === computerChoice) {
             return "It's a tie. No one wins."
