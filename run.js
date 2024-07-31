@@ -69,33 +69,33 @@ function playGame() {
     let computerScore = 0;
     let humanSelection;
 
-        for (let i = 1; i <= 5; i++) {
-            const message = "Round " + i;
-            console.log(message);
+    for (let i = 1; i <= 5; i++) {
+        const message = "Round " + i;
+        console.log(message);
 
-            humanSelection = getHumanChoice();
-            if (humanSelection === null) {
-                console.log("Game cancelled by user.")
-                break;
-            }
-
-            else if (humanSelection === "No valid input.") {
-                console.log("? No valid input. Please try again. ?")
-                i--; // add one iteration to the max number of iterations in the loop
-                continue; // skip this iteration
-            }
-
-            console.log("Human choice: " + humanSelection);
-
-            const computerSelection = getComputerChoice();
-            console.log("Computer choice: " + computerSelection);
-
-            console.log(playRound(humanSelection, computerSelection));
+        humanSelection = getHumanChoice();
+        if (humanSelection === null) {
+            console.log("Game cancelled by user.")
+            break;
         }
 
-        if (humanSelection !== null) {
-            console.log(printScores());
+        else if (humanSelection === "No valid input.") {
+            console.log("? No valid input. Please try again. ?")
+            i--; // reset iteration 
+            continue; // skip this iteration
         }
+
+        console.log("Human choice: " + humanSelection);
+
+        const computerSelection = getComputerChoice();
+        console.log("Computer choice: " + computerSelection);
+
+        console.log(playRound(humanSelection, computerSelection));
+    }
+
+    if (humanSelection !== null) {
+        console.log(printScores());
+    }
 
     function printScores() {
         console.log("** Game Over **")
