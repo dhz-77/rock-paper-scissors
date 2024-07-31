@@ -46,7 +46,8 @@ function getHumanChoice() {
     // return a valid choice
     const humanChoice = prompt("Rock, paper or scissors?");
 
-    if (humanChoice.toLowerCase() === "rock"
+    if (   humanChoice === null // when human player clicks "cancel" in the prompt window
+        || humanChoice.toLowerCase() === "rock"
         || humanChoice.toLowerCase() === "paper"
         || humanChoice.toLowerCase() === "scissors") {
         return humanChoice;
@@ -66,22 +67,24 @@ function playGame() {
     // Value to be reassigned over time, so we use "let":
     let humanScore = 0;
     let computerScore = 0;
-    //max number of iterations in the loop
+    let humanSelection;
 
-    console.log(roundLoop());
-    console.log(printScores());
-
-    function roundLoop() {
         for (let i = 1; i <= 5; i++) {
             const message = "Round " + i;
             console.log(message);
 
-            const humanSelection = getHumanChoice();
-            if (humanSelection === "No valid input.") {
+            humanSelection = getHumanChoice();
+            if (humanSelection === null) {
+                console.log("Game cancelled by user.")
+                break;
+            }
+
+            else if (humanSelection === "No valid input.") {
                 console.log("? No valid input. Please try again. ?")
                 i--; // add one iteration to the max number of iterations in the loop
                 continue; // skip this iteration
             }
+
             console.log("Human choice: " + humanSelection);
 
             const computerSelection = getComputerChoice();
@@ -89,7 +92,10 @@ function playGame() {
 
             console.log(playRound(humanSelection, computerSelection));
         }
-    }
+
+        if (humanSelection !== null) {
+            console.log(printScores());
+        }
 
     function printScores() {
         console.log("** Game Over **")
