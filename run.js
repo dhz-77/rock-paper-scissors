@@ -69,25 +69,32 @@ function playGame() {
     //max number of iterations in the loop
     let max = 5;
 
-    for (let i = 0; i < max; i++) {
-        const humanSelection = getHumanChoice();
-        if (humanSelection === "No valid input. Please try again.") {
-            console.log(humanSelection)
-            max++; // add one iteration to the max number of iterations in the loop
-            continue; // skip this iteration
-        }
-        const computerSelection = getComputerChoice();
+    console.log(roundLoop());
+    console.log(printScores());
 
-        console.log(playRound(humanSelection, computerSelection));
+    function roundLoop() {
+        for (let i = 0; i < max; i++) {
+            const humanSelection = getHumanChoice();
+            if (humanSelection === "No valid input. Please try again.") {
+                console.log(humanSelection)
+                max++; // add one iteration to the max number of iterations in the loop
+                continue; // skip this iteration
+            }
+            const computerSelection = getComputerChoice();
+
+            console.log(playRound(humanSelection, computerSelection));
+        }
     }
 
-    console.log("Human score: " + humanScore)
-    console.log("Computer score: " + computerScore)
+    function printScores() {
+        console.log("Human score: " + humanScore)
+        console.log("Computer score: " + computerScore)
 
-    if (humanScore > computerScore) {
-        return "You won the game!"
-    } else {
-        return "You loose the game."
+        if (humanScore > computerScore) {
+            return "You won the game!"
+        } else {
+            return "You loose the game."
+        }
     }
 
     // write a function that takes the human and computer player choices
