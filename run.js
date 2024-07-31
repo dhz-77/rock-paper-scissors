@@ -1,6 +1,6 @@
 "use strict";
 
-console.log("test");
+console.log("Test HTML to JS link: OK");
 
 function getComputerChoice() {
     // Math.random() returns a random number equal to 0 and less than 1
@@ -12,7 +12,7 @@ function getComputerChoice() {
     // main algorithm further below takes this exact float number and works 
     // as intended
     const randomFloat =  getRandomFloat(); 
-    console.log(randomFloat); 
+    console.log("Computer random float: " + randomFloat); 
     // For example: returns 0.55
 
     // main algorithm:
@@ -55,5 +55,5 @@ function getHumanChoice() {
     }
 }
 
-console.log(getComputerChoice());
-console.log(getHumanChoice());
+console.log("Computer choice: " + getComputerChoice());
+console.log("Human choice: " + getHumanChoice());
