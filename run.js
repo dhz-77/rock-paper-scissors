@@ -75,11 +75,11 @@ function playGame() {
     console.log("Computer score: " + computerScore)
 
     if (humanScore > computerScore) {
-        console.log("You won the game!")
+        return "You won the game!"
     } else {
-        console.log("You loose the game.")
+        return "You loose the game."
     }
-    
+
     // write a function that takes the human and computer player choices
     // as arguments, plays a single round, increments the round winner’s 
     // score and logs a winner announcement.
