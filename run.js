@@ -54,7 +54,7 @@ function getHumanChoice() {
     if (humanChoice.toLowerCase() === "rock"
         || humanChoice.toLowerCase() === "paper"
         || humanChoice.toLowerCase() === "scissors") {
-        return humanChoice.toLowerCase();
+        return humanChoice;
     } else {
         return "No valid input.";
     }
