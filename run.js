@@ -51,7 +51,7 @@ function getHumanChoice() {
         || humanChoice.toLowerCase() === "scissors") {
         return humanChoice;
     } else {
-        return "No valid input. Please try again.";
+        return "No valid input.";
     }
 }
 
@@ -67,17 +67,19 @@ function playGame() {
     let humanScore = 0;
     let computerScore = 0;
     //max number of iterations in the loop
-    let max = 5;
 
     console.log(roundLoop());
     console.log(printScores());
 
     function roundLoop() {
-        for (let i = 0; i < max; i++) {
+        for (let i = 1; i <= 5; i++) {
+            const message = "Round " + i;
+            console.log(message);
+
             const humanSelection = getHumanChoice();
-            if (humanSelection === "No valid input. Please try again.") {
-                console.log(humanSelection)
-                max++; // add one iteration to the max number of iterations in the loop
+            if (humanSelection === "No valid input.") {
+                console.log("? No valid input. Please try again. ?")
+                i--; // add one iteration to the max number of iterations in the loop
                 continue; // skip this iteration
             }
             console.log("Human choice: " + humanSelection);
@@ -90,13 +92,14 @@ function playGame() {
     }
 
     function printScores() {
+        console.log("** Game Over **")
         console.log("Human score: " + humanScore)
         console.log("Computer score: " + computerScore)
 
         if (humanScore > computerScore) {
-            return "You won the game!"
+            return "** You won the game! **"
         } else {
-            return "You loose the game."
+            return "** You loose the game. **"
         }
     }
 
@@ -107,37 +110,37 @@ function playGame() {
         const hChoice = humanChoice.toLowerCase();
 
         if (hChoice === computerChoice) {
-            return "It's a tie. No one wins."
+            return "--> It's a tie. No one wins."
         }
 
         else if (hChoice === "rock" && computerChoice === "scissors") {
             humanScore++;
-            return "You win! Rock beats Scissors."
+            return "--> You win! Rock beats Scissors."
         }
 
         else if (hChoice === "paper" && computerChoice === "rock") {
             humanScore++;
-            return "You win! Paper beats rock."
+            return "--> You win! Paper beats rock."
         }
 
         else if (hChoice === "scissors" && computerChoice === "paper") {
             humanScore++;
-            return "You win! Scissors beats paper."
+            return "--> You win! Scissors beats paper."
         }
 
         else if (hChoice === "rock" && computerChoice === "paper") {
             computerScore++;
-            return "You loose! Paper beats rock."
+            return "--> You loose! Paper beats rock."
         }
 
         else if (hChoice === "paper" && computerChoice === "scissors") {
             computerScore++;
-            return "You loose! Scissors beats paper."
+            return "--> You loose! Scissors beats paper."
         }
 
         else if (hChoice === "scissors" && computerChoice === "rock") {
             computerScore++;
-            return "You loose! Rock beats scissors."
+            return "--> You loose! Rock beats scissors."
         }
     }
 }
