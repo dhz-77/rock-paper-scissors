@@ -2,11 +2,6 @@
 
 console.log("Test HTML to JS link: OK");
 
-// Keep track of players score in global scope
-// Value to be reassigned over time, so we use "let":
-let humanScore = 0;
-let computerScore = 0;
-
 function getComputerChoice() {
     // Math.random() returns a random number equal to 0 and less than 1
     function getRandomFloat() {
@@ -60,48 +55,63 @@ function getHumanChoice() {
     }
 }
 
-// write a function that takes the human and computer player choices
-// as arguments, plays a single round, increments the round winner’s 
-// score and logs a winner announcement.
-function playRound(humanChoice, computerChoice) {
-    const hChoice = humanChoice.toLowerCase();
+console.log(playGame());
 
-    console.log("Human choice: " + hChoice);
-    console.log("Computer choice: " + computerChoice);
+// The game will play 5 rounds. Write a function that calls playRound 
+// to play 5 rounds, keeps track of the scores and declares a winner 
+// at the end.
 
-    if (hChoice === computerChoice) {
-        return "It's a tie. No one wins."
+function playGame() {
+    // Keep track of players score in global scope
+    // Value to be reassigned over time, so we use "let":
+    let humanScore = 0;
+    let computerScore = 0;
+
+    for (let i = 0; i < 5; i++) {
+        console.log(playRound(getHumanChoice(), getComputerChoice()));
     }
 
-    else if (hChoice === "rock" && computerChoice === "scissors") {
-        humanScore++;
-        return "You win! Rock beats Scissors."
-    }
+    // write a function that takes the human and computer player choices
+    // as arguments, plays a single round, increments the round winner’s 
+    // score and logs a winner announcement.
+    function playRound(humanChoice, computerChoice) {
+        const hChoice = humanChoice.toLowerCase();
 
-    else if (hChoice === "paper" && computerChoice === "rock") {
-        humanScore++;
-        return "You win! Paper beats rock."
-    }
+        console.log("Human choice: " + hChoice);
+        console.log("Computer choice: " + computerChoice);
 
-    else if (hChoice === "scissors" && computerChoice === "paper") {
-        humanScore++;
-        return "You win! Scissors beats paper."
-    }
+        if (hChoice === computerChoice) {
+            return "It's a tie. No one wins."
+        }
 
-    else if (hChoice === "rock" && computerChoice === "paper") {
-        computerScore++;
-        return "You loose! Paper beats rock."
-    }
+        else if (hChoice === "rock" && computerChoice === "scissors") {
+            humanScore++;
+            return "You win! Rock beats Scissors."
+        }
 
-    else if (hChoice === "paper" && computerChoice === "scissors") {
-        computerScore++;
-        return "You loose! Scissors beats paper."
-    }
+        else if (hChoice === "paper" && computerChoice === "rock") {
+            humanScore++;
+            return "You win! Paper beats rock."
+        }
 
-    else if (hChoice === "scissors" && computerChoice === "rock") {
-        computerScore++;
-        return "You loose! Rock beats scissors."
+        else if (hChoice === "scissors" && computerChoice === "paper") {
+            humanScore++;
+            return "You win! Scissors beats paper."
+        }
+
+        else if (hChoice === "rock" && computerChoice === "paper") {
+            computerScore++;
+            return "You loose! Paper beats rock."
+        }
+
+        else if (hChoice === "paper" && computerChoice === "scissors") {
+            computerScore++;
+            return "You loose! Scissors beats paper."
+        }
+
+        else if (hChoice === "scissors" && computerChoice === "rock") {
+            computerScore++;
+            return "You loose! Rock beats scissors."
+        }
     }
 }
-
-console.log(playRound(getHumanChoice(), getComputerChoice()));
