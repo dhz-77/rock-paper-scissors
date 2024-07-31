@@ -51,7 +51,7 @@ function getHumanChoice() {
         || humanChoice.toLowerCase() === "scissors") {
         return humanChoice;
     } else {
-        return "No valid input.";
+        return "No valid input. Please try again.";
     }
 }
 
@@ -66,9 +66,19 @@ function playGame() {
     // Value to be reassigned over time, so we use "let":
     let humanScore = 0;
     let computerScore = 0;
+    //max number of iterations in the loop
+    let max = 5;
 
-    for (let i = 0; i < 5; i++) {
-        console.log(playRound(getHumanChoice(), getComputerChoice()));
+    for (let i = 0; i < max; i++) {
+        const humanSelection = getHumanChoice();
+        if (humanSelection === "No valid input. Please try again.") {
+            console.log(humanSelection)
+            max++; // add one iteration to the max number of iterations in the loop
+            continue; // skip this iteration
+        }
+        const computerSelection = getComputerChoice();
+
+        console.log(playRound(humanSelection, computerSelection));
     }
 
     console.log("Human score: " + humanScore)
