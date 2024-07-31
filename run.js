@@ -49,7 +49,7 @@ function getHumanChoice() {
 
     // create a pop up window which prompts the user to input text and
     // return a valid choice
-    let humanChoice = prompt("Rock, paper or scissors?");
+    const humanChoice = prompt("Rock, paper or scissors?");
 
     if (humanChoice.toLowerCase() === "rock"
         || humanChoice.toLowerCase() === "paper"
