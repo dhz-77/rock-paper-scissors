@@ -5,7 +5,7 @@ console.log("Test HTML to JS link: OK");
 // Keep track of players score in global scope
 // Value to be reassigned over time, so we use "let":
 let humanScore = 0;
-let ComputerScore = 0;
+let computerScore = 0;
 
 function getComputerChoice() {
     // Math.random() returns a random number equal to 0 and less than 1
