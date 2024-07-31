@@ -62,3 +62,12 @@ function getHumanChoice() {
 
 console.log("Computer choice: " + getComputerChoice());
 console.log("Human choice: " + getHumanChoice());
+
+
+// write a function that takes the human and computer player choices
+// as arguments, plays a single round, increments the round winner’s 
+// score and logs a winner announcement.
+function playRound(humanChoice, computerChoice) {
+    const humanChoiceFormatted = humanChoice.toLowerCase();
+
+}
