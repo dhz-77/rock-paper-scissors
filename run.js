@@ -82,7 +82,7 @@ function playGame() { // play 5 rounds, keep track of scores, declare winner
 
         if (humanScore > computerScore) {
             console.log("** You won the game! **")
-        } else if {
+        } else if (humanScore == computerScore) {
             console.log("** It's a tie. No one wins! **")
         } else {
             console.log("** You loose the game! **")
