@@ -10,8 +10,7 @@ function playGame() { // play 5 rounds, keep track of scores, declare winner
     let computerScore = 0;
 
     for (let i = 1; i <= 5; i++) {
-        const message = "Round " + i;
-        console.log(message);
+        console.log("Round " + i);
 
         const humanSelection = getHumanChoice();
         const computerSelection = getComputerChoice();
