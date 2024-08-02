@@ -41,7 +41,7 @@ function playGame() { // play 5 rounds, keep track of scores, declare winner
         const hChoice = humanChoice.toLowerCase();
 
         if (hChoice === computerChoice) {
-            console.log("--> It's a tie. No one wins.")
+            console.log("--> It's a tie.")
         }
 
         else if (hChoice === "rock" && computerChoice === "scissors") {
@@ -80,10 +80,12 @@ function playGame() { // play 5 rounds, keep track of scores, declare winner
         console.log("Human score: " + humanScore)
         console.log("Computer score: " + computerScore)
 
-        if (humanScore > computerScore) { // condition is missing, fix later
+        if (humanScore > computerScore) {
             console.log("** You won the game! **")
+        } else if {
+            console.log("** It's a tie. No one wins! **")
         } else {
-            console.log("** You loose the game. **")
+            console.log("** You loose the game! **")
         }
     }
 }
