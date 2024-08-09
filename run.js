@@ -2,20 +2,100 @@
 
 console.log("Test HTML to JS link: OK");
 
-playGame();
+const wrapper = document.querySelector("#wrapper");
 
-function playGame() { // play 5 rounds, keep track of scores, declare winner
+let humanScore = 0;
+let computerScore = 0;
+let roundCounter = 1;
+
+const results = document.querySelector("#results");
+const scores = document.querySelector("#scores");
+scores.setAttribute("style", "white-space: pre-line;"); // enable line breaks 
+
+const final = document.querySelector("#final");
+final.setAttribute("style", "white-space: pre-line;"); 
+
+const buttonEnd = document.querySelector("#buttonEnd");
+
+const h2 = document.createElement("h2");
+const para = document.createElement("p");
+const para2 = document.createElement("p");
+const para3 = document.createElement("p");
+
+wrapper.addEventListener("click", (event) => {
+    const isButton = event.target.nodeName === 'BUTTON';
+    if (!isButton) {
+        return; // prevent event from firing if div element is clicked
+    }
+
+        //console.dir(event.target.id);
+
+    const humanSelection = event.target.id;
+    const computerSelection = getComputerChoice();
+
+        /*para.textContent = "Your choice: " + humanSelection;
+        para.textContent = "Computer choice: " + computerSelection;
+        results.appendChild(para);*/
     
-    let humanScore = 0;
-    let computerScore = 0;
+    h2.textContent = "Round " + roundCounter;
+    results.appendChild(h2);
 
-    //for (let i = 1; i <= 5; i++) {
-        console.log("Round " + i);
+    playRound(humanSelection, computerSelection);
 
-        const humanSelection = getHumanChoice();
-        const computerSelection = getComputerChoice();
+    para2.textContent= "Your score: " + humanScore + '\n' 
+                 + "Computer score: " + computerScore;
+    scores.appendChild(para2);
 
-        if (humanSelection === null) {
+    if (roundCounter < 5) {
+        roundCounter++;
+    }
+
+    else if (roundCounter === 5) {
+
+        printScores();
+        final.appendChild(para3);
+
+        humanScore = 0;
+        computerScore = 0;
+        roundCounter = 1;
+
+        const restartButton = document.createElement("button");
+        restartButton.setAttribute("id", "restartBtn");
+        restartButton.textContent = "Restart game";
+        buttonEnd.appendChild(restartButton);
+    }
+
+    buttonEnd.addEventListener("click", (event) => {
+        const isButton = event.target.nodeName === 'BUTTON';
+
+        if (!isButton) {
+        return; // prevent event from firing if div element is clicked
+        }
+
+        h2.remove();
+        para.remove();
+        para2.remove();
+        para3.remove();
+        document.querySelector("#restartBtn").remove();
+    })
+
+});
+
+
+
+
+
+//playGame();
+
+//function playGame() { // play 5 rounds, keep track of scores, declare winner
+    
+    /*for (let i = 1; i <= 5; i++) {
+        console.log("Round " + i);*/
+
+        //const humanSelection = getHumanChoice();
+        //const computerSelection = getComputerChoice();
+
+        /*if (humanSelection === null) {
             console.log("Game cancelled by user.")
             //break;
         }
@@ -24,70 +104,68 @@ function playGame() { // play 5 rounds, keep track of scores, declare winner
             console.log("? No valid input. Please try again. ?")
             //i--; // reset iteration 
             //continue;
-        }
+        }*/
 
-        console.log("Human choice: " + humanSelection);
-        console.log("Computer choice: " + computerSelection);
+        //console.log("Human choice: " + humanSelection);
+        //console.log("Computer choice: " + computerSelection);
 
-        playRound(humanSelection, computerSelection);
+        //playRound(humanSelection, computerSelection);
 
-        if (i === 5) {
+        /*if (i === 5) {
             printScores();
-        }
+        }*/
     //}
 
     function playRound(humanChoice, computerChoice) {
-        const hChoice = humanChoice.toLowerCase();
 
-        if (hChoice === computerChoice) {
-            console.log("--> It's a tie.")
+        if (humanChoice === computerChoice) {           
+            para.textContent = "--> It's a tie.";
         }
 
-        else if (hChoice === "rock" && computerChoice === "scissors") {
+        else if (humanChoice === "rock" && computerChoice === "scissors") {
             humanScore++;
-            console.log("--> You win! Rock beats Scissors.")
+            para.textContent = "--> You win! Rock beats Scissors.";
         }
 
-        else if (hChoice === "paper" && computerChoice === "rock") {
+        else if (humanChoice === "paper" && computerChoice === "rock") {
             humanScore++;
-            console.log("--> You win! Paper beats rock.")
+            para.textContent = "--> You win! Paper beats rock.";
         }
 
-        else if (hChoice === "scissors" && computerChoice === "paper") {
+        else if (humanChoice === "scissors" && computerChoice === "paper") {
             humanScore++;
-            console.log("--> You win! Scissors beats paper.")
+            para.textContent = "--> You win! Scissors beats paper.";
         }
 
-        else if (hChoice === "rock" && computerChoice === "paper") {
+        else if (humanChoice === "rock" && computerChoice === "paper") {
             computerScore++;
-            console.log("--> You loose! Paper beats rock.")
+            para.textContent = "--> You loose! Paper beats rock.";
         }
 
-        else if (hChoice === "paper" && computerChoice === "scissors") {
+        else if (humanChoice === "paper" && computerChoice === "scissors") {
             computerScore++;
-            console.log("--> You loose! Scissors beats paper.")
+            para.textContent = "--> You loose! Scissors beats paper.";
         }
 
-        else if (hChoice === "scissors" && computerChoice === "rock") {
+        else if (humanChoice === "scissors" && computerChoice === "rock") {
             computerScore++;
-            console.log("--> You loose! Rock beats scissors.")
+            para.textContent = "--> You loose! Rock beats scissors.";
         }
+
+        results.appendChild(para);
     }
 
     function printScores() {
-        console.log("** Game Over **")
-        console.log("Human score: " + humanScore)
-        console.log("Computer score: " + computerScore)
-
+  
         if (humanScore > computerScore) {
-            console.log("** You won the game! **")
+            para3.textContent = "** Game Over **" + "\n" + "** You won the game! **";
         } else if (humanScore == computerScore) {
-            console.log("** It's a tie. No one wins! **")
+            para3.textContent = "** Game Over **" + "\n" + "** It's a tie. No one wins! **";
         } else {
-            console.log("** You loose the game! **")
+            para3.textContent = "** Game Over **" + "\n" + "** You loose the game! **";
         }
     }
-}
+//}
 
 function getComputerChoice() {
 
@@ -109,7 +187,7 @@ function getComputerChoice() {
 
 }
 
-function getHumanChoice() {
+/*function getHumanChoice() {
 
     const humanChoice = prompt("Rock, paper or scissors?");
 
@@ -121,4 +199,4 @@ function getHumanChoice() {
     } else {
         return false;
     }
-}
+}*/
