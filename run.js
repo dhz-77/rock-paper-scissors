@@ -9,7 +9,7 @@ function playGame() { // play 5 rounds, keep track of scores, declare winner
     let humanScore = 0;
     let computerScore = 0;
 
-    for (let i = 1; i <= 5; i++) {
+    //for (let i = 1; i <= 5; i++) {
         console.log("Round " + i);
 
         const humanSelection = getHumanChoice();
@@ -17,13 +17,13 @@ function playGame() { // play 5 rounds, keep track of scores, declare winner
 
         if (humanSelection === null) {
             console.log("Game cancelled by user.")
-            break;
+            //break;
         }
 
         else if (humanSelection === false) {
             console.log("? No valid input. Please try again. ?")
-            i--; // reset iteration 
-            continue;
+            //i--; // reset iteration 
+            //continue;
         }
 
         console.log("Human choice: " + humanSelection);
@@ -34,7 +34,7 @@ function playGame() { // play 5 rounds, keep track of scores, declare winner
         if (i === 5) {
             printScores();
         }
-    }
+    //}
 
     function playRound(humanChoice, computerChoice) {
         const hChoice = humanChoice.toLowerCase();
