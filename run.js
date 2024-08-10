@@ -31,10 +31,6 @@ buttons.forEach((item) => {
     
         const humanSelection = event.target.id;
         const computerSelection = getComputerChoice();
-    
-            /*para.textContent = "Your choice: " + humanSelection;
-            para.textContent = "Computer choice: " + computerSelection;
-            results.appendChild(para);*/
         
         h2.textContent = "Round " + roundCounter;
         results.appendChild(h2);
