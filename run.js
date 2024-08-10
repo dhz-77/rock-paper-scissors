@@ -50,11 +50,9 @@ wrapper.addEventListener("click", (event) => {
                  + "Computer score: " + computerScore;
     scores.appendChild(para2);
 
-    if (roundCounter < 5) {
-        roundCounter++;
-    }
-
-    else if (roundCounter === 5) {
+    roundCounter++;
+    
+    if (humanScore === 5 || computerScore === 5) {
 
         rock.disabled = true;
         paper.disabled = true;
