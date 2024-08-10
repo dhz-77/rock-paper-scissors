@@ -17,7 +17,7 @@ final.setAttribute("style", "white-space: pre-line;");
 const roundTitle = document.createElement("h2");
 const resultTitle = document.createElement("p");
 const scoreTitle = document.createElement("p");
-const winnerTitle = document.createElement("p");
+const winnerTitle = document.createElement("h2");
 const restartButton = document.createElement("button");
 
 resultTitle.setAttribute("style", "width: 250px; font-weight: bold; border: solid black; border-radius: 2px; padding: 20px 5px;");
@@ -44,6 +44,7 @@ buttons.forEach((item) => {
         scoreTitle.textContent= "Your score: " + humanScore + '\n' 
                               + "Computer score: " + computerScore;
         scores.appendChild(scoreTitle);
+        
     
         roundCounter++;
         
@@ -52,6 +53,15 @@ buttons.forEach((item) => {
             buttons.forEach((item) => {
                     item.disabled = true;
             })
+
+            if (humanScore > computerScore) {
+                scoreTitle.style.backgroundColor = "lightgreen";
+            }
+            else if (humanScore < computerScore) {
+                scoreTitle.style.backgroundColor = "pink";
+            } else {
+                scoreTitle.style.backgroundColor = "unset";
+            }
     
             printScores();
             final.appendChild(winnerTitle);
@@ -69,6 +79,7 @@ buttons.forEach((item) => {
             resultTitle.remove();
             scoreTitle.remove();
             winnerTitle.remove();
+            scoreTitle.style.backgroundColor = "unset";
             restartButton.style.display = "none"
     
             buttons.forEach((item) => {
@@ -82,36 +93,43 @@ function playRound(humanChoice, computerChoice) {
 
     if (humanChoice === computerChoice) {           
         resultTitle.textContent = "--> It's a tie.";
+        resultTitle.style.backgroundColor = "lightyellow";
     }
 
     else if (humanChoice === "rock" && computerChoice === "scissors") {
         humanScore++;
         resultTitle.textContent = "--> You win! Rock beats Scissors.";
+        resultTitle.style.backgroundColor = "lightgreen";
     }
 
     else if (humanChoice === "paper" && computerChoice === "rock") {
         humanScore++;
         resultTitle.textContent = "--> You win! Paper beats rock.";
+        resultTitle.style.backgroundColor = "lightgreen";
     }
 
     else if (humanChoice === "scissors" && computerChoice === "paper") {
         humanScore++;
         resultTitle.textContent = "--> You win! Scissors beats paper.";
+        resultTitle.style.backgroundColor = "lightgreen";
     }
 
     else if (humanChoice === "rock" && computerChoice === "paper") {
         computerScore++;
         resultTitle.textContent = "--> You loose! Paper beats rock.";
+        resultTitle.style.backgroundColor = "pink";
     }
 
     else if (humanChoice === "paper" && computerChoice === "scissors") {
         computerScore++;
         resultTitle.textContent = "--> You loose! Scissors beats paper.";
+        resultTitle.style.backgroundColor = "pink";
     }
 
     else if (humanChoice === "scissors" && computerChoice === "rock") {
         computerScore++;
         resultTitle.textContent = "--> You loose! Rock beats scissors.";
+        resultTitle.style.backgroundColor = "pink";
     }
 
     results.appendChild(resultTitle);
