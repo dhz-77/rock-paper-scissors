@@ -18,6 +18,11 @@ const roundTitle = document.createElement("h2");
 const resultTitle = document.createElement("p");
 const scoreTitle = document.createElement("p");
 const winnerTitle = document.createElement("p");
+const restartButton = document.createElement("button");
+restartButton.setAttribute("id", "restartBtn");
+restartButton.textContent = "Restart game";
+restart.appendChild(restartButton);
+restartButton.style.display = "none";
 
 let buttons = document.querySelectorAll("#wrapper button");
 
@@ -48,29 +53,20 @@ buttons.forEach((item) => {
             printScores();
             final.appendChild(winnerTitle);
     
-            const restartButton = document.createElement("button");
-            restartButton.setAttribute("id", "restartBtn");
-            restartButton.textContent = "Restart game";
-            restart.appendChild(restartButton);
+            restartButton.style.display = "unset"
 
             humanScore = 0;
             computerScore = 0;
             roundCounter = 1;
         }
     
-        restart.addEventListener("click", (event) => {
-            const isButton = event.target.nodeName === 'BUTTON';
-    
-            if (!isButton) {
-            return; // prevent event from firing if div element is clicked
-            }
+        restartButton.addEventListener("click", (event) => {
     
             roundTitle.remove();
             resultTitle.remove();
             scoreTitle.remove();
             winnerTitle.remove();
-            const restartBtn = document.querySelector("#restartBtn")
-            restartBtn.remove();
+            restartButton.style.display = "none"
     
             buttons.forEach((item) => {
                 item.disabled = false;
