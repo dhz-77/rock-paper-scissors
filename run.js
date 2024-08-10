@@ -26,68 +26,68 @@ const rock = document.querySelector("#rock");
 const paper = document.querySelector("#paper");
 const scissors = document.querySelector("#scissors");
 
-wrapper.addEventListener("click", (event) => {
-    const isButton = event.target.nodeName === 'BUTTON';
-    if (!isButton) {
-        return; // prevent event from firing if div element is clicked
-    }
+let buttons = document.querySelectorAll("#wrapper button");
 
-    console.dir(event.target.id);
-
-    const humanSelection = event.target.id;
-    const computerSelection = getComputerChoice();
-
-        /*para.textContent = "Your choice: " + humanSelection;
-        para.textContent = "Computer choice: " + computerSelection;
-        results.appendChild(para);*/
+buttons.forEach((item) => {
+    item.addEventListener('click', (event) => {
     
-    h2.textContent = "Round " + roundCounter;
-    results.appendChild(h2);
-
-    playRound(humanSelection, computerSelection);
-
-    para2.textContent= "Your score: " + humanScore + '\n' 
-                 + "Computer score: " + computerScore;
-    scores.appendChild(para2);
-
-    roundCounter++;
+        console.dir(event.target.id);
     
-    if (humanScore === 5 || computerScore === 5) {
-
-        rock.disabled = true;
-        paper.disabled = true;
-        scissors.disabled = true;
-
-        printScores();
-        final.appendChild(para3);
-
-        humanScore = 0;
-        computerScore = 0;
-        roundCounter = 1;
-
-        const restartButton = document.createElement("button");
-        restartButton.setAttribute("id", "restartBtn");
-        restartButton.textContent = "Restart game";
-        buttonEnd.appendChild(restartButton);
-    }
-
-    buttonEnd.addEventListener("click", (event) => {
-        const isButton = event.target.nodeName === 'BUTTON';
-
-        if (!isButton) {
-        return; // prevent event from firing if div element is clicked
+        const humanSelection = event.target.id;
+        const computerSelection = getComputerChoice();
+    
+            /*para.textContent = "Your choice: " + humanSelection;
+            para.textContent = "Computer choice: " + computerSelection;
+            results.appendChild(para);*/
+        
+        h2.textContent = "Round " + roundCounter;
+        results.appendChild(h2);
+    
+        playRound(humanSelection, computerSelection);
+    
+        para2.textContent= "Your score: " + humanScore + '\n' 
+                     + "Computer score: " + computerScore;
+        scores.appendChild(para2);
+    
+        roundCounter++;
+        
+        if (humanScore === 5 || computerScore === 5) {
+    
+            rock.disabled = true;
+            paper.disabled = true;
+            scissors.disabled = true;
+    
+            printScores();
+            final.appendChild(para3);
+    
+            humanScore = 0;
+            computerScore = 0;
+            roundCounter = 1;
+    
+            const restartButton = document.createElement("button");
+            restartButton.setAttribute("id", "restartBtn");
+            restartButton.textContent = "Restart game";
+            buttonEnd.appendChild(restartButton);
         }
-
-        h2.remove();
-        para.remove();
-        para2.remove();
-        para3.remove();
-        const restartBtn = document.querySelector("#restartBtn")
-        restartBtn.remove();
-
-        rock.disabled = false;
-        paper.disabled = false;
-        scissors.disabled = false;
+    
+        buttonEnd.addEventListener("click", (event) => {
+            const isButton = event.target.nodeName === 'BUTTON';
+    
+            if (!isButton) {
+            return; // prevent event from firing if div element is clicked
+            }
+    
+            h2.remove();
+            para.remove();
+            para2.remove();
+            para3.remove();
+            const restartBtn = document.querySelector("#restartBtn")
+            restartBtn.remove();
+    
+            rock.disabled = false;
+            paper.disabled = false;
+            scissors.disabled = false;
+        })
     })
 });
 
@@ -159,5 +159,4 @@ function getComputerChoice() {
     } else { // implicitly >= 2/3 && < 3/3
         return "scissors";
     }
-
 }
