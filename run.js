@@ -22,6 +22,10 @@ const para = document.createElement("p");
 const para2 = document.createElement("p");
 const para3 = document.createElement("p");
 
+const rock = document.querySelector("#rock");
+const paper = document.querySelector("#paper");
+const scissors = document.querySelector("#scissors");
+
 wrapper.addEventListener("click", (event) => {
     const isButton = event.target.nodeName === 'BUTTON';
     if (!isButton) {
@@ -52,6 +56,10 @@ wrapper.addEventListener("click", (event) => {
 
     else if (roundCounter === 5) {
 
+        rock.disabled = true;
+        paper.disabled = true;
+        scissors.disabled = true;
+
         printScores();
         final.appendChild(para3);
 
@@ -77,6 +85,10 @@ wrapper.addEventListener("click", (event) => {
         para2.remove();
         para3.remove();
         document.querySelector("#restartBtn").remove();
+
+        rock.disabled = false;
+        paper.disabled = false;
+        scissors.disabled = false;
     })
 
 });
