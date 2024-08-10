@@ -22,10 +22,6 @@ const para = document.createElement("p");
 const para2 = document.createElement("p");
 const para3 = document.createElement("p");
 
-const rock = document.querySelector("#rock");
-const paper = document.querySelector("#paper");
-const scissors = document.querySelector("#scissors");
-
 let buttons = document.querySelectorAll("#wrapper button");
 
 buttons.forEach((item) => {
@@ -52,10 +48,10 @@ buttons.forEach((item) => {
         roundCounter++;
         
         if (humanScore === 5 || computerScore === 5) {
-    
-            rock.disabled = true;
-            paper.disabled = true;
-            scissors.disabled = true;
+
+            buttons.forEach((item) => {
+                    item.disabled = true;
+            })
     
             printScores();
             final.appendChild(para3);
@@ -84,9 +80,9 @@ buttons.forEach((item) => {
             const restartBtn = document.querySelector("#restartBtn")
             restartBtn.remove();
     
-            rock.disabled = false;
-            paper.disabled = false;
-            scissors.disabled = false;
+            buttons.forEach((item) => {
+                item.disabled = false;
+            })
         })
     })
 });
