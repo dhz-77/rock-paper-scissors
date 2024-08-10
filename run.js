@@ -62,10 +62,10 @@ buttons.forEach((item) => {
     
         restartButton.addEventListener("click", (event) => {
     
-            roundTitle.remove();
-            resultTitle.remove();
-            scoreTitle.remove();
-            winnerTitle.remove();
+            roundTitle.textContent = "";
+            resultTitle.textContent = "";
+            scoreTitle.textContent = "";
+            winnerTitle.textContent = "";
             restartButton.style.display = "none"
     
             buttons.forEach((item) => {
