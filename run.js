@@ -14,15 +14,16 @@ const restart = document.querySelector("#restart");
 scores.setAttribute("style", "white-space: pre-line;"); // enable line breaks 
 final.setAttribute("style", "white-space: pre-line;"); 
 
-const roundTitle = document.createElement("h2");
+const roundTitle = document.createElement("p");
 const resultTitle = document.createElement("p");
 const scoreTitle = document.createElement("p");
 const winnerTitle = document.createElement("h2");
 const restartButton = document.createElement("button");
 
-resultTitle.setAttribute("style", "width: 250px; font-weight: bold; border: solid black; border-radius: 2px; padding: 20px 5px;");
-scoreTitle.setAttribute("style", "width: 120px; border: solid black; border-radius: 2px; padding: 20px 5px;");
+resultTitle.setAttribute("style", "font-weight: bold; border: solid black; border-width: 5px; border-radius: 50px; padding: 20px 5px;");
+scoreTitle.setAttribute("style", "border: solid black; border-radius: 3px; padding: 5px 5px; background-color: white;");
 restartButton.setAttribute("id", "restartBtn");
+restartButton.setAttribute("style", "cursor: pointer; padding: 6px 10px; font-size: 15px; border-width: 5px; border-radius: 10px;");
 restartButton.textContent = "Restart game";
 restart.appendChild(restartButton);
 restartButton.style.display = "none";
@@ -35,11 +36,11 @@ buttons.forEach((item) => {
         console.dir(event.target.id);
         const humanSelection = event.target.id;
         const computerSelection = getComputerChoice();
-        
-        roundTitle.textContent = "Round " + roundCounter;
-        results.appendChild(roundTitle);
     
         playRound(humanSelection, computerSelection);
+
+        roundTitle.textContent = "Round " + roundCounter;
+        scores.appendChild(roundTitle);
     
         scoreTitle.textContent= "Your score: " + humanScore + '\n' 
                               + "Computer score: " + computerScore;
@@ -60,7 +61,7 @@ buttons.forEach((item) => {
             else if (humanScore < computerScore) {
                 scoreTitle.style.backgroundColor = "pink";
             } else {
-                scoreTitle.style.backgroundColor = "unset";
+                scoreTitle.style.backgroundColor = "white";
             }
     
             printScores();
@@ -79,7 +80,7 @@ buttons.forEach((item) => {
             resultTitle.remove();
             scoreTitle.remove();
             winnerTitle.remove();
-            scoreTitle.style.backgroundColor = "unset";
+            scoreTitle.style.backgroundColor = "white";
             restartButton.style.display = "none"
     
             buttons.forEach((item) => {
@@ -92,43 +93,43 @@ buttons.forEach((item) => {
 function playRound(humanChoice, computerChoice) {
 
     if (humanChoice === computerChoice) {           
-        resultTitle.textContent = "--> It's a tie.";
+        resultTitle.textContent = "> It's a tie. <";
         resultTitle.style.backgroundColor = "lightyellow";
     }
 
     else if (humanChoice === "rock" && computerChoice === "scissors") {
         humanScore++;
-        resultTitle.textContent = "--> You win! Rock beats Scissors.";
+        resultTitle.textContent = "> You win! Rock beats Scissors. <";
         resultTitle.style.backgroundColor = "lightgreen";
     }
 
     else if (humanChoice === "paper" && computerChoice === "rock") {
         humanScore++;
-        resultTitle.textContent = "--> You win! Paper beats rock.";
+        resultTitle.textContent = "> You win! Paper beats rock. <";
         resultTitle.style.backgroundColor = "lightgreen";
     }
 
     else if (humanChoice === "scissors" && computerChoice === "paper") {
         humanScore++;
-        resultTitle.textContent = "--> You win! Scissors beats paper.";
+        resultTitle.textContent = "> You win! Scissors beats paper. <";
         resultTitle.style.backgroundColor = "lightgreen";
     }
 
     else if (humanChoice === "rock" && computerChoice === "paper") {
         computerScore++;
-        resultTitle.textContent = "--> You loose! Paper beats rock.";
+        resultTitle.textContent = "> You loose! Paper beats rock. <";
         resultTitle.style.backgroundColor = "pink";
     }
 
     else if (humanChoice === "paper" && computerChoice === "scissors") {
         computerScore++;
-        resultTitle.textContent = "--> You loose! Scissors beats paper.";
+        resultTitle.textContent = "> You loose! Scissors beats paper. <";
         resultTitle.style.backgroundColor = "pink";
     }
 
     else if (humanChoice === "scissors" && computerChoice === "rock") {
         computerScore++;
-        resultTitle.textContent = "--> You loose! Rock beats scissors.";
+        resultTitle.textContent = "> You loose! Rock beats scissors. <";
         resultTitle.style.backgroundColor = "pink";
     }
 
@@ -138,11 +139,11 @@ function playRound(humanChoice, computerChoice) {
 function printScores() {
   
     if (humanScore > computerScore) {
-        winnerTitle.textContent = "** Game Over **" + "\n" + "** You won the game! **";
+        winnerTitle.textContent = "Game Over." + "\n" + "You won the game!";
     } else if (humanScore == computerScore) {
-        winnerTitle.textContent = "** Game Over **" + "\n" + "** It's a tie. No one wins! **";
+        winnerTitle.textContent = "Game Over." + "\n" + "It's a tie. No one wins!";
     } else {
-        winnerTitle.textContent = "** Game Over **" + "\n" + "** You loose the game! **";
+        winnerTitle.textContent = "Game Over." + "\n" + "You loose the game!";
     }
 }
 
