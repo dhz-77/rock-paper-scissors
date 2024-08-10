@@ -19,6 +19,7 @@ const resultTitle = document.createElement("p");
 const scoreTitle = document.createElement("p");
 const winnerTitle = document.createElement("p");
 const restartButton = document.createElement("button");
+resultTitle.setAttribute("style", "width: 250px; border: solid black; border-radius: 2px; padding: 5px;");
 restartButton.setAttribute("id", "restartBtn");
 restartButton.textContent = "Restart game";
 restart.appendChild(restartButton);
@@ -62,10 +63,10 @@ buttons.forEach((item) => {
     
         restartButton.addEventListener("click", (event) => {
     
-            roundTitle.textContent = "";
-            resultTitle.textContent = "";
-            scoreTitle.textContent = "";
-            winnerTitle.textContent = "";
+            roundTitle.remove();
+            resultTitle.remove();
+            scoreTitle.remove();
+            winnerTitle.remove();
             restartButton.style.display = "none"
     
             buttons.forEach((item) => {
