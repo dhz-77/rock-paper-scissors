@@ -19,7 +19,9 @@ const resultTitle = document.createElement("p");
 const scoreTitle = document.createElement("p");
 const winnerTitle = document.createElement("p");
 const restartButton = document.createElement("button");
-resultTitle.setAttribute("style", "width: 250px; border: solid black; border-radius: 2px; padding: 5px;");
+
+resultTitle.setAttribute("style", "width: 250px; font-weight: bold; border: solid black; border-radius: 2px; padding: 20px 5px;");
+scoreTitle.setAttribute("style", "width: 120px; border: solid black; border-radius: 2px; padding: 20px 5px;");
 restartButton.setAttribute("id", "restartBtn");
 restartButton.textContent = "Restart game";
 restart.appendChild(restartButton);
