@@ -1,0 +1,64 @@
+body {
+    background-color: powderblue;
+    text-align: center;
+    font-family: monospace;
+}
+
+h1 {
+    font-size: 40px;
+    margin-bottom: 50px;
+}
+
+#wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-width: 40px;
+}
+
+#wrapper button {
+    cursor: pointer;
+    margin: 10px;
+    border: none;
+    background-color: transparent;
+    width: 150px; height: 150px;
+    padding: 20px 20px;
+    background-size: 150px;
+    background-repeat:no-repeat;
+    background-position: center center;
+}
+
+#wrapper button.gentle-hover-shake:hover {
+    animation: tilt-shaking 0.25s infinite;
+}
+
+#rock {
+    background-image: url( "images/rock.png" );
+}
+
+#paper {
+    background-image: url( "images/paper.png" );
+}
+
+#scissors {
+    background-image: url( "images/scissors.png" );
+}
+
+#results {
+    margin: auto;
+    margin-bottom: -20px;
+    width: 350px;
+    font-size: 15px
+}
+
+#scores {
+    margin: auto; width: 150px;
+}
+
+@keyframes tilt-shaking {
+    0% { transform: rotate(0deg); }
+    25% { transform: rotate(5deg); }
+    50% { transform: rotate(0eg); }
+    75% { transform: rotate(-5deg); }
+    100% { transform: rotate(0deg); }
+}
